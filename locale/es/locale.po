@@ -203,6 +203,10 @@ msgstr "Actualizada con éxito la puntuación de similitud de iThenticate."
 msgid "plugins.generic.plagiarism.action.submitSubmission.success"
 msgstr "Se cargó exitosamente el archivo de envío a iThenticate."
 
+#, fuzzy
+msgid "plugins.generic.plagiarism.action.submitSubmission.eulaUpdated"
+msgstr "Turnitin ha actualizado su EULA. Por favor, inténtelo de nuevo para revisar y aceptar los nuevos términos."
+
 msgid "plugins.generic.plagiarism.webhook.configuration.missing"
 msgstr ""
 "El webhook de iThenticate no está configurado para el ID de contexto "
@@ -403,3 +407,47 @@ msgstr "Todos los archivos asignados a este componente se enviarán a iThenticat
 
 msgid "plugins.generic.plagiarism.genre.ithenticate"
 msgstr "iThenticate"
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.delete.description"
+msgstr "Eliminar el webhook para la cuenta iThenticate para una ruta de contexto dada"
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.credentials.missing"
+msgstr "Se requieren credenciales de API. Proporcione --api-url y --api-key, o --context para usar las credenciales almacenadas."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.nothingToDelete"
+msgstr "No se encontró ningún webhook en la API de iThenticate para este contexto. Nada que eliminar."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.orphaned"
+msgstr "Existe un webhook en la API de iThenticate (id: {$webhookId}, url: {$url}) pero NO está en la base de datos. Use 'update --include-api' para eliminar y volver a registrar, o 'delete --include-api' para eliminarlo."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.list.empty"
+msgstr "No se encontraron webhooks en la API de iThenticate para las credenciales proporcionadas."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.alreadyExists"
+msgstr "Ya existe un webhook en la API de iThenticate con id: {$webhookId} para URL: {$url}. Use 'update --include-api' para reemplazarlo."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.nothingToDelete"
+msgstr "No se encontró ningún webhook en la base de datos para este contexto. Use --include-api para verificar también en la API de iThenticate."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.deleted.notFoundAtApi"
+msgstr "El webhook {$webhookId} no se encontró en la API de iThenticate (puede que ya haya sido eliminado). Limpiando el registro local de la base de datos."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.deleted.dbPreserved"
+msgstr "El webhook eliminado {$deletedId} difiere del registro de la base de datos ({$dbId}). El registro de la base de datos se conservó."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.dbApiMismatch"
+msgstr "Discrepancia de ID de webhook: la base de datos tiene {$dbId} pero la API de iThenticate tiene {$apiId} para URL {$url}. Use 'update --include-api' para resolver."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.validateDbMismatch"
+msgstr "Nota: El webhook validado {$validatedId} (de la API) difiere del registro de la base de datos ({$dbId})."

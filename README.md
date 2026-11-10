@@ -72,6 +72,22 @@ ithenticate = On
 ; It is possible to disable auto upload at specific Journal/Server/Press level rather than globally
 ; disableAutoSubmission[Journal_or_Server_or_Press_path] = On
 
+; Verify the TLS certificate of the iThenticate API host on every outbound API request.
+; Default: On (secure). Set to Off ONLY for a local/staging box talking to a sandbox endpoint
+; that presents a self-signed or otherwise untrusted certificate.
+; verify_ssl = On
+
+; Controls the `allow_insecure` flag sent when (re-)registering the inbound webhook — i.e. whether
+; iThenticate may deliver similarity results to a non-HTTPS / untrusted-cert endpoint.
+; Default: unset — the value is then derived from the webhook URL scheme: an https base_url
+; registers secure (false); an http base_url registers insecure (true) and logs a warning that
+; results are delivered unencrypted. Set it explicitly only to override that derivation:
+;   On  = your site is served over HTTPS but with a self-signed / untrusted certificate
+;         (the scheme looks secure, but iThenticate cannot validate the cert, so it needs insecure delivery)
+;   Off = force-refuse insecure delivery even on http (iThenticate will reject the http webhook URL)
+; Takes effect only on the next webhook re-registration (php tools/webhook.php update).
+; webhook_allow_insecure = Off
+
 ; Other settings can be configured here; see README.md for all options.
 ```
 
@@ -90,30 +106,21 @@ When you update(after initial configuration) iThenticate API credentials in `con
 
 The webhook command-line tool helps you manage iThenticate webhooks for your contexts.
 
-**Basic Usage:**
-
 ```bash
 # Register webhooks for a specific journal/press/server
-php plugins/generic/plagiarism/tools/webhook.php register --context=yourcontextpath
+php plugins/generic/plagiarism/tools/webhook.php register --context=yourjournalpath
 
-# Update existing webhooks (useful after changing API credentials), use --force to force update
-php plugins/generic/plagiarism/tools/webhook.php update --context=yourcontextpath
+# Update existing webhooks (useful after changing API credentials)
+php plugins/generic/plagiarism/tools/webhook.php update --context=yourjournalpath
 
 # Validate webhook configuration
-php plugins/generic/plagiarism/tools/webhook.php validate --context=yourcontextpath
+php plugins/generic/plagiarism/tools/webhook.php validate --context=yourjournalpath
 
 # List all configured webhooks
 php plugins/generic/plagiarism/tools/webhook.php list
 ```
 
-**When to use:**
-- After changing `api_url` or `api_key` in `config.inc.php`
-- To verify webhook configuration is working correctly
-- To troubleshoot similarity score delivery issues
-
-**Finding your context path:**
-- From `Administration --> Hosted Journals --> Settings Wizard `
-- Or use the context ID number instead of the path
+For detailed usage including all commands, flags, and advanced features (API-level operations, orphaned webhook recovery, duplicate cleanup, and more), see the [Webhook CLI Usage Guide](WEBHOOK_CLI_USAGE.md).
 
 ## Restrictions
 1. The submitting user must confirm the iThenticate End User License Agreement to send files to iThenticate service for plagiarism checking.

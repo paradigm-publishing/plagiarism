@@ -283,3 +283,51 @@ msgstr "سيتم إرسال جميع الملفات المسندة إلى هذا
 
 msgid "plugins.generic.plagiarism.genre.ithenticate"
 msgstr "iThenticate"
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.delete.description"
+msgstr "حذف الخطاف الإلكتروني لحساب iThenticate لمسار سياق محدد"
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.credentials.missing"
+msgstr "بيانات اعتماد واجهة برمجة التطبيق مطلوبة. قدّم --api-url و --api-key، أو --context لاستخدام بيانات الاعتماد المخزنة."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.nothingToDelete"
+msgstr "لم يتم العثور على خطاف إلكتروني في واجهة برمجة التطبيق لـ iThenticate لهذا السياق. لا يوجد شيء للحذف."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.orphaned"
+msgstr "يوجد خطاف إلكتروني في واجهة برمجة التطبيق لـ iThenticate (المعرف: {$webhookId}، الرابط: {$url}) لكنه غير موجود في قاعدة البيانات. استخدم 'update --include-api' للحذف وإعادة التسجيل، أو 'delete --include-api' لإزالته."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.list.empty"
+msgstr "لم يتم العثور على خطافات إلكترونية في واجهة برمجة التطبيق لـ iThenticate لبيانات الاعتماد المقدمة."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.alreadyExists"
+msgstr "يوجد خطاف إلكتروني بالفعل في واجهة برمجة التطبيق لـ iThenticate بالمعرف: {$webhookId} للرابط: {$url}. استخدم 'update --include-api' لاستبداله."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.nothingToDelete"
+msgstr "لم يتم العثور على خطاف إلكتروني في قاعدة البيانات لهذا السياق. استخدم --include-api للتحقق أيضًا من واجهة برمجة التطبيق لـ iThenticate."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.deleted.notFoundAtApi"
+msgstr "لم يتم العثور على الخطاف الإلكتروني {$webhookId} في واجهة برمجة التطبيق لـ iThenticate (ربما تم حذفه بالفعل). جارٍ تنظيف سجل قاعدة البيانات المحلية."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.deleted.dbPreserved"
+msgstr "الخطاف الإلكتروني المحذوف {$deletedId} يختلف عن سجل قاعدة البيانات ({$dbId}). تم الحفاظ على سجل قاعدة البيانات."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.dbApiMismatch"
+msgstr "عدم تطابق معرف الخطاف الإلكتروني: قاعدة البيانات تحتوي على {$dbId} لكن واجهة برمجة التطبيق لـ iThenticate تحتوي على {$apiId} للرابط {$url}. استخدم 'update --include-api' للحل."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.tools.registerWebhooks.webhook.includeApi.validateDbMismatch"
+msgstr "ملاحظة: الخطاف الإلكتروني الذي تم التحقق منه {$validatedId} (من واجهة برمجة التطبيق) يختلف عن سجل قاعدة البيانات ({$dbId})."
+
+#, fuzzy
+msgid "plugins.generic.plagiarism.action.submitSubmission.eulaUpdated"
+msgstr "قامت Turnitin بتحديث اتفاقية ترخيص المستخدم النهائي. يُرجى المحاولة مرة أخرى لمراجعة الشروط الجديدة وقبولها."

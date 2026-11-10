@@ -147,15 +147,24 @@ class PlagiarismSettingsForm extends Form
 			if ($this->_plugin->getSetting($this->_context->getId(), 'ithenticateApiUrl') !== $ithenticateApiUrl ||
 				$this->_plugin->getSetting($this->_context->getId(), 'ithenticateApiKey') !== $ithenticateApiKey) {
 
+				// Bust the per-context EULA cache so the new tenant's EULA details are
+				// fetched on the next getContextEulaDetails() call. Otherwise the previous
+				// tenant's cached version/url would silently leak across the credentials swap.
+				$this->_plugin->clearEulaCache($this->_context);
+
 				$ithenticate = $this->_plugin->initIthenticate($ithenticateApiUrl, $ithenticateApiKey);
 
 				// If there is a already registered webhook for this context, need to delete it first
 				// before creating a new one as webhook URL remains same which will return 409(HTTP_CONFLICT)
 				if ($this->_context->getData('ithenticateWebhookId')) {
-					$ithenticate->deleteWebhook($this->_context->getData('ithenticateWebhookId'));
+					if (!$ithenticate->deleteWebhook($this->_context->getData('ithenticateWebhookId'))) {
+						error_log("Failed to delete existing iThenticate webhook {$this->_context->getData('ithenticateWebhookId')} for context {$this->_context->getId()}");
+					}
 				}
 
-				$this->_plugin->registerIthenticateWebhook($ithenticate);
+				if (!$this->_plugin->registerIthenticateWebhook($ithenticate, $this->_context)) {
+					error_log("Failed to register iThenticate webhook for context {$this->_context->getId()}");
+				}
 			}
 
 			$this->_plugin->updateSetting($this->_context->getId(), 'ithenticateApiUrl', $ithenticateApiUrl, 'string');
